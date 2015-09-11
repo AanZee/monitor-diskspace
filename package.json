@@ -12,5 +12,9 @@
   },
   "keywords": [],
   "author": "Roy Peters",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "monitor-response": "git+https://aanzee.git.beanstalkapp.com/monitor-response.git",
+    "nodejs-disks": "^0.2.1"
+  }
 }
