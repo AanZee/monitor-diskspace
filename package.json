@@ -1,7 +1,7 @@
 {
   "name": "monitor-diskspace",
   "version": "0.1.0",
-  "description": "Used for a consistent way of json output",
+  "description": "Monitor server diskspace",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
