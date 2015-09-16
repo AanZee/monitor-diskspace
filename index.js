@@ -14,8 +14,7 @@ exports.executeCron = function (callback) {
     diskspaceData(function(err, data){
         if(err)
             callback(err);
-
-        if(data)
+        else
             callback(null, data);
     });
 }
