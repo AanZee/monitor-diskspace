@@ -1,5 +1,6 @@
 exports.isMonitoringModule = true;
 exports.hasCron = true;
+exports.snapshot = true;
 
 var njds = require('nodejs-disks');
 var responseMessaging = require('monitor-response');
