@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://aanzee.git.beanstalkapp.com/monitor-diskspace.git"
+    "url": "https://github.com/AanZee/monitor-diskspace.git"
   },
   "keywords": [],
   "author": "Roy Peters",
   "license": "ISC",
   "dependencies": {
-    "monitor-response": "git+https://aanzee.git.beanstalkapp.com/monitor-response.git",
+    "monitor-response": "git+https://github.com/AanZee/monitor-response.git",
     "nodejs-disks": "^0.2.1"
   }
 }
