@@ -66,7 +66,7 @@ var win32DiskspaceData = function(callback) {
 		if(err)
 			callback(err);
 		else
-			callback(null, data); // TODO: Change data structure and data to readable bytes
+			callback(null, aDrives); // TODO: Change data structure and data to readable bytes
 	});
 }
 
