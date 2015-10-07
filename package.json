@@ -13,8 +13,8 @@
   "keywords": [],
   "author": "Roy Peters",
   "license": "ISC",
-  "dependencies": {
-    "monitor-response": "git+https://github.com/AanZee/monitor-response.git",
+  "optionalDependencies": {
+    "diskinfo": "0.0.3",
     "nodejs-disks": "^0.2.1"
   }
 }
