@@ -18,11 +18,11 @@ exports.getRoutes = function () {
 }
 
 exports.executeCron = function (callback) {
-	diskspaceData(function(err, data){
+	diskspaceData(function(err, drives){
 		if(err)
 			callback(err);
 		else
-			callback(null, data);
+			callback(null, drives);
 	});
 }
 
@@ -45,14 +45,14 @@ var diskspaceData = function(callback){
 
 var linuxDarwinDiskspaceData = function(callback) {
 	njds.drives(
-		function (err, drives) {
+		function (err, driveNames) {
 			njds.drivesDetail(
-				drives,
-				function (err, data) {
+				driveNames,
+				function (err, drives) {
 					if(err)
 						callback(err);
 					else {
-						data.forEach(function(drive) {
+						drives.forEach(function(drive) {
 							// Convert strings to bytes
 							drive.available = numeral().unformat(drive.available);
 							drive.total = numeral().unformat(drive.total);
@@ -63,7 +63,7 @@ var linuxDarwinDiskspaceData = function(callback) {
 							drive.usedPer = parseFloat(drive.usedPer);
 						});
 
-						callback(null, data);
+						callback(null, drives);
 					}
 				}
 			);
@@ -72,21 +72,21 @@ var linuxDarwinDiskspaceData = function(callback) {
 }
 
 var win32DiskspaceData = function(callback) {
-	win32ds.drives(function(err, aDrives) {
+	win32ds.drives(function(err, drives) {
 		if(err)
 			callback(err);
 		else
-			callback(null, aDrives);
+			callback(null, drives);
 	});
 }
 
 // var getDiskspace = function(req, res, next) {
 
-//  diskspaceData(function(err, data){
+//  diskspaceData(function(err, drives){
 //      if(err)
 //          res.json(responseMessaging.format(500, {}, [err]));
 //      else
-//          res.json(responseMessaging.format(200, data));  
+//          res.json(responseMessaging.format(200, drives));  
 //  });
 
 // }
