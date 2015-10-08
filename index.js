@@ -52,10 +52,16 @@ var linuxDarwinDiskspaceData = function(callback) {
 					if(err)
 						callback(err);
 					else {
-						// Convert strings to bytes
-						data.available = numeral().unformat(data.available);
-						data.total = numeral().unformat(data.total);
-						data.used = numeral().unformat(data.used);
+						data.forEach(function(drive) {
+							// Convert strings to bytes
+							drive.available = numeral().unformat(drive.available);
+							drive.total = numeral().unformat(drive.total);
+							drive.used = numeral().unformat(drive.used);
+
+							// Convert strings to numbers
+							drive.freePer = parseFloat(drive.freePer);
+							drive.usedPer = parseFloat(drive.usedPer);
+						});
 
 						callback(null, data);
 					}
