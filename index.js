@@ -3,6 +3,7 @@ exports.hasCron = true;
 exports.snapshotData = true;
 
 var os = require('os');
+var numeral = require('numeral');
 var njds = null;
 var win32ds = require('./lib/win32DiskspaceData');
 
@@ -50,8 +51,14 @@ var linuxDarwinDiskspaceData = function(callback) {
 				function (err, data) {
 					if(err)
 						callback(err);
-					else
-						callback(null, data); // TODO: Change data to readable bytes
+					else {
+						// Convert strings to bytes
+						data.available = numeral().unformat(data.available);
+						data.total = numeral().unformat(data.total);
+						data.used = numeral().unformat(data.used);
+
+						callback(null, data);
+					}
 				}
 			);
 		}
@@ -63,7 +70,7 @@ var win32DiskspaceData = function(callback) {
 		if(err)
 			callback(err);
 		else
-			callback(null, aDrives); // TODO: Change data structure and data to readable bytes
+			callback(null, aDrives);
 	});
 }
 
