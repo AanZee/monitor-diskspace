@@ -4,13 +4,10 @@ exports.snapshotData = true;
 
 var os = require('os');
 var njds = null;
-var diskinfo = null;
+var win32ds = require('./lib/win32DiskspaceData');
 
 try {
 	njds = require('nodejs-disks');
-} catch(e) {}
-try {
-	diskinfo = require('diskinfo');
 } catch(e) {}
 
 exports.getRoutes = function () {
@@ -62,7 +59,7 @@ var linuxDarwinDiskspaceData = function(callback) {
 }
 
 var win32DiskspaceData = function(callback) {
-	diskinfo.getDrives(function(err, aDrives) {
+	win32ds.drives(function(err, aDrives) {
 		if(err)
 			callback(err);
 		else

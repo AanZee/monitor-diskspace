@@ -14,7 +14,6 @@
   "author": "Roy Peters",
   "license": "ISC",
   "optionalDependencies": {
-    "diskinfo": "0.0.3",
     "nodejs-disks": "^0.2.1"
   }
 }
