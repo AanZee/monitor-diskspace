@@ -13,10 +13,7 @@
   "keywords": [],
   "author": "Roy Peters",
   "license": "ISC",
-  "optionalDependencies": {
-    "nodejs-disks": "^0.2.1"
-  },
   "dependencies": {
-    "numeral": "^1.5.3"
+    "async": "^1.5.2"
   }
 }

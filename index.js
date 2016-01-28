@@ -3,13 +3,14 @@ exports.hasCron = true;
 exports.snapshotData = true;
 
 var os = require('os');
-var numeral = require('numeral');
-var njds = null;
-var win32ds = require('./lib/win32DiskspaceData');
+var njds = require('./lib/disks'); // Linux and Darwin
+var win32ds = require('./lib/win32DiskspaceData'); // Windows
 
-try {
-	njds = require('nodejs-disks');
-} catch(e) {}
+// var numeral = require('numeral');
+// var njds = null;
+// try {
+// 	njds = require('nodejs-disks');
+// } catch(e) {}
 
 exports.getRoutes = function () {
 	return [
@@ -52,16 +53,16 @@ var linuxDarwinDiskspaceData = function(callback) {
 					if(err)
 						callback(err);
 					else {
-						drives.forEach(function(drive) {
-							// Convert strings to bytes
-							drive.available = numeral().unformat(drive.available);
-							drive.total = numeral().unformat(drive.total);
-							drive.used = numeral().unformat(drive.used);
+						// drives.forEach(function(drive) {
+						// 	// Convert strings to bytes
+						// 	drive.available = numeral().unformat(drive.available);
+						// 	drive.total = numeral().unformat(drive.total);
+						// 	drive.used = numeral().unformat(drive.used);
 
-							// Convert strings to numbers
-							drive.freePer = parseFloat(drive.freePer);
-							drive.usedPer = parseFloat(drive.usedPer);
-						});
+						// 	// Convert strings to numbers
+						// 	drive.freePer = parseFloat(drive.freePer);
+						// 	drive.usedPer = parseFloat(drive.usedPer);
+						// });
 
 						callback(null, drives);
 					}
